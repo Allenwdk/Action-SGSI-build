@@ -25,7 +25,11 @@ on:
         default: 'SGSI.zip'
 
 
-
+env:
+  ROM_URL: https://alist.lzyy.asia/d%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%98/%E5%88%B7%E6%9C%BA%E5%8C%85/Redmi%20Note%204X(mido)/Flyme/Redmi%20Note4x_Flyme%208.20.12.8%20daily_a10.zip
+  ROM_NAME: Flyme
+  BUILD_TYPE: ab
+  TZ: Asia/Shanghai
 
 jobs:
   build:
@@ -62,14 +66,7 @@ jobs:
           sudo rm -rf $GITHUB_WORKSPACE/Tool-SGSI-build/apps_clean
           sudo cp -r apps_clean $GITHUB_WORKSPACE/Tool-SGSI-build/apps_clean
           sudo chmod 777 -R $GITHUB_WORKSPACE/Tool-SGSI-build
-
-      - name: Download ROM‌‌...
-        run: |
-          cd $GITHUB_WORKSPACE/Tool-SGSI-build
-          mkdir ./tmp
-          wget -U "Mozilla/5.0" ${{ github.event.inputs.ROM_URL }} -O "$GITHUB_WORKSPACE/Tool-SGSI-build/tmp/${{ github.event.inputs.ZIP_NAME }}"
-          echo "zip_file: $(ls "$GITHUB_WORKSPACE/Tool-SGSI-build/tmp/")"
-
+      
       - name: Configuration tool environment...
         run: |
           sudo sed -i 's/USE_MIRROR_FOR_PIP\=true/USE_MIRROR_FOR_PIP\=false/' $GITHUB_WORKSPACE/Tool-SGSI-build/setup.sh
@@ -80,12 +77,7 @@ jobs:
       - name: Make AB type GSI‌‌...
         if: ${{ github.event.inputs.SGSI_TYPE }} == 'AB' || ${{ github.event.inputs.SGSI_TYPE }} == 'BOTH'
         run: |
-          sudo bash $GITHUB_WORKSPACE/Tool-SGSI-build/make.sh AB << EOF
-          ${{ github.event.inputs.ZIP_NAME }}
-          y
-          y
-          ${{ github.event.inputs.OS_TYPE }}
-          y
+          sudo bash ./url2SGSI.sh --$BUILD_TYPE $ROM_URL $ROM_NAME
 
       - name: Packing(AB)...
         if: ${{ github.event.inputs.SGSI_TYPE }} == 'AB' || ${{ github.event.inputs.SGSI_TYPE }} == 'BOTH'
