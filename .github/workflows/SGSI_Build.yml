@@ -6,15 +6,15 @@ on:
       ROM_URL:
         description: 'ROM_URL'
         required: true
-        default: 'https://hugeota.d.miui.com/21.5.31/miui_TUCANA_21.5.31_cb42ec9bed_11.0.zip'
+        default: 'https://alist.lzyy.asia/d/%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%98/%E5%88%B7%E6%9C%BA%E5%8C%85/Redmi%20Note%204X(mido)/Flyme/Redmi%20Note4x_Flyme%208.20.12.8%20daily_a10.zip'
       ZIP_NAME:
         description: 'ZIP_NAME'
         required: true
-        default: 'miui_TUCANA_21.5.31_cb42ec9bed_11.0.zip'
+        default: 'Redmi Note4x_Flyme 8.20.12.8 daily_a10.zip'
       OS_TYPE:
         description: 'OS_TYPE'
         required: true
-        default: 'miui'
+        default: 'Flyme'
       SGSI_TYPE:
         description: 'SGSI_TYPE(AB, A, or BOTH)'
         required: true
