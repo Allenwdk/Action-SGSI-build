@@ -26,7 +26,7 @@ on:
 
 
 env:
-  ROM_URL: https://alist.lzyy.asia/d%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%98/%E5%88%B7%E6%9C%BA%E5%8C%85/Redmi%20Note%204X(mido)/Flyme/Redmi%20Note4x_Flyme%208.20.12.8%20daily_a10.zip
+  ROM_URL: https://alist.lzyy.asia/d/%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%98/%E5%88%B7%E6%9C%BA%E5%8C%85/Redmi%20Note%204X(mido)/Flyme/Redmi%20Note4x_Flyme%208.20.12.8%20daily_a10.zip
   ROM_NAME: Flyme
   BUILD_TYPE: ab
   TZ: Asia/Shanghai
@@ -71,7 +71,6 @@ jobs:
         run: |
           sudo sed -i 's/USE_MIRROR_FOR_PIP\=true/USE_MIRROR_FOR_PIP\=false/' $GITHUB_WORKSPACE/Tool-SGSI-build/setup.sh
           sudo bash $GITHUB_WORKSPACE/Tool-SGSI-build/setup.sh
-          sudo apt-get -y --purge remove "adoptopenjdk-11-hotspot"
           java -version
 
       - name: Make AB type GSI‌‌...
